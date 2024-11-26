@@ -1,0 +1,43 @@
+=========navigateToAccNew.html================
+
+<template>
+   <div class="slds-box">
+       <lightning-card title="Navigate to Account new page">
+           <lightning-button label="Go To New Account" onclick={NavigateToNew}></lightning-button>
+       </lightning-card>
+   </div> 
+</template>
+
+==========navigateToAccNew.js=====================
+
+import { LightningElement } from 'lwc';
+import { NavigationMixin } from 'lightning/navigation';
+export default class NavigateToAccNew extends NavigationMixin(LightningElement) {
+    NavigateToNew(){
+        this[NavigationMixin.Navigate]({
+            type:'standard__objectPage',
+            attributes:{
+                objectApiName:'Account',
+                actionName:'new'
+            },
+            state: {
+                defaultFieldValues: 'AccountNumber=1234,Name=Debasis,NumberOfEmployees=250',
+                nooverride: '1'
+            }
+
+        });
+    }
+}    
+
+============navigateToAccNew.js-meta.xml==============
+
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>62.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightning__AppPage</target>
+        <target>lightning__RecordPage</target>
+        <target>lightning__HomePage</target>
+    </targets>
+</LightningComponentBundle>LightningComponentBundle>
